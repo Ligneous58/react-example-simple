@@ -1,24 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import Posts from './page/Posts';
+import NavbarComponent from './components/NavbarComponent';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import EditPostPage from './page/EditPost';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <NavbarComponent />
+      <div className="container mt-3">
+        <Routes>
+          <Route path="/" element={<Posts />} />
+          <Route path="/posts" element={<Posts />} />
+          <Route path="/edit-post/:id" element={<EditPostPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
